@@ -1,7 +1,16 @@
-import React from "react";
+import React, { FormEvent, FormEventHandler } from "react";
 import { useReducer } from "react"
 
-function reducer (state: {age: number, name: string}, action: {type: any}) {
+type Action = {
+    type: 'increment age' | 'decrement age' | 'reset age';
+}
+
+type ActionWithPayload = {
+    type: 'change name',
+    payload: string
+}
+
+function reducer (state: {age: number, name: string}, action: Action | ActionWithPayload) {
 
     switch (action.type) {
         case 'increment age' : 
@@ -34,7 +43,7 @@ const initialState = {age: 31, name: 'Taylor'}
 export const ComponentWithReducer = () => {
     const [state, dispatch] = useReducer(reducer, initialState) // optional 3rd parameter - function for making the initial state 
 
-    function changeName (e) {
+    function changeName (e:React.ChangeEvent<HTMLInputElement>) {
         dispatch({
             type : 'change name',
             payload: e.target.value

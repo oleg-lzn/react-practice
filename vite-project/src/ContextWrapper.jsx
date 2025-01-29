@@ -1,9 +1,7 @@
 import { TestContext } from "./ContextFile";
 import { useState } from "react";
 
-export function ContextWrapper(props) {
-  const { children } = props;
-
+export function ContextWrapper({ children }) {
   const [money, setMoney] = useState(0);
   const [food, setFood] = useState("burger");
 

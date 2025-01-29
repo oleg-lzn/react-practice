@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { customhook } from "../../hooks/getItems";
 import { Portals } from "./Portals";
 import ComponentWithReducer from "./Reducer";
+import Memo from "./TestMemo";
 
 function App() {
   const { money, setMoney, food, setFood } = useContext(TestContext);
@@ -45,6 +46,7 @@ function App() {
       </div>
 
       <ComponentWithReducer />
+      <Memo />
     </>
   );
 }
