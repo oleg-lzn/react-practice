@@ -20,10 +20,14 @@ class ApiRequester {
     const headers = new Headers(initHeaders);
 
     headers.append("Content-Type", "application/json");
-    headers.append("auth-token", this.token);
+    // headers.append("auth-token", this.token);
     const fetchOptions = { headers, ...restOptions };
-
-    return fetch(path, fetchOptions).then((res) => res.json());
+    return Promise.race([
+      fetch(this.baseUrl + path, fetchOptions).then((res) => res.json()),
+      new Promise((_, reject) =>
+        setTimeout(() => reject(new Error("Promise got rejected")), 3000)
+      ),
+    ]);
   }
 
   checkApiResponse(res) {
@@ -35,6 +39,5 @@ class ApiRequester {
   }
 }
 
-// const BASE_URL =
-//   process.env.BASE_URL || "https://jsonplaceholder.typicode.com/";
-// export const apiRequester = new ApiRequester(BASE_URL);
+const BASE_URL = "https://jsonplaceholder.typicode.com/";
+export const apiRequester = new ApiRequester(BASE_URL);

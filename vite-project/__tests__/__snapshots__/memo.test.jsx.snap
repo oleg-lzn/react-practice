@@ -1,0 +1,38 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`snapshot with nothing in TestMemo 1`] = `
+<DocumentFragment>
+  <label>
+     Список клиентов
+    <input
+      type="checkbox"
+    />
+    <input
+      class=""
+      type="text"
+      value=""
+    />
+  </label>
+  <ul
+    class="users"
+  >
+    <li>
+      Oleg
+    </li>
+    <li>
+      Alex
+    </li>
+    <li>
+      Elena
+    </li>
+    <li>
+      Ivan
+    </li>
+  </ul>
+  <button>
+    Клик: 0
+  </button>
+</DocumentFragment>
+`;
+
+

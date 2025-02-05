@@ -1,16 +1,27 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TestContext } from "./ContextFile";
 import { useContext } from "react";
 import { customhook } from "../../hooks/getItems";
 import { Portals } from "./Portals";
 import ComponentWithReducer from "./Reducer";
 import Memo from "./TestMemo";
+import { getItems } from "../../api/api-calls";
+import { useData } from "../../hooks/useData";
 
 function App() {
   const { money, setMoney, food, setFood } = useContext(TestContext);
   const { currentItems, nextPage, prevPage, currentPage, totalPages } =
     customhook(10);
+  const { data, loading, error, fetchData } = useData();
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  const onClick = () => {
+    fetchData(getItems());
+  };
 
   function changeFood() {
     setFood((prevFood) => (prevFood === "burger" ? "pizza" : "burger"));
