@@ -1,5 +1,8 @@
 export async function comments() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts/");
+  if (!response.ok) {
+    throw new Error(`Error during request ${response.status}`);
+  }
   const result = await response.json();
   return result;
 }
