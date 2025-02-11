@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { TestContext, ThemeContext } from "./ContextFile";
 import { useContext } from "react";
 import { customhook } from "../../hooks/getItems";
-import { Portals } from "./Portals";
 import ComponentWithReducer from "./Reducer";
 import Memo from "./TestMemo";
 import { getItems } from "../../api/api-calls";
 import { useData } from "../../hooks/useData";
 import Timer from "./timer";
+import Table from "./Table_Search";
+import RefPortalModal from "./Portals";
+import Modal from "./Modal/Modal";
 
 function App() {
   const { money, setMoney, food, setFood } = useContext(TestContext);
@@ -16,6 +18,7 @@ function App() {
   const { currentItems, nextPage, prevPage, currentPage, totalPages } =
     customhook(10);
   const { data, loading, error, fetchData } = useData();
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     setMoney(16);
@@ -25,6 +28,10 @@ function App() {
   const onClick = () => {
     fetchData(getItems());
   };
+
+  function toggleModal() {
+    setModalOpen((prev) => (prev === false ? true : false));
+  }
 
   function changeFood() {
     setFood((prevFood) => (prevFood === "burger" ? "pizza" : "burger"));
@@ -45,7 +52,6 @@ function App() {
 
   return (
     <>
-      <Portals></Portals>
       <div className={`app ${theme === "dark" ? "theme-dark" : "theme-light"}`}>
         <ul className="comments">
           {currentItems.map((item) => (
@@ -83,6 +89,14 @@ function App() {
       <button className="theme__change" onClick={changeTheme}>
         Change Theme
       </button>
+      <Table />
+
+      <button onClick={toggleModal}>Open Modal</button>
+      {modalOpen && (
+        <RefPortalModal>
+          <Modal onClose={toggleModal} />
+        </RefPortalModal>
+      )}
     </>
   );
 }

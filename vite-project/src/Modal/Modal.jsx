@@ -1,6 +1,6 @@
 import "./Modal.css";
 
-export default function ModalContent({ onClose }) {
+export default function Modal({ onClose }) {
   return (
     <div className="modal">
       <div>I'm a modal dialog</div>

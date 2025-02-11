@@ -1,4 +1,4 @@
-export async function comments() {
+export async function getPosts() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts/");
   if (!response.ok) {
     throw new Error(`Error during request ${response.status}`);
