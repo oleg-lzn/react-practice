@@ -19,6 +19,7 @@ function App() {
     customhook(10);
   const { data, loading, error, fetchData } = useData();
   const [modalOpen, setModalOpen] = useState(false);
+  const [price, setPrice] = useState(12);
 
   useEffect(() => {
     setMoney(16);
@@ -97,6 +98,16 @@ function App() {
           <Modal onClose={toggleModal} />
         </RefPortalModal>
       )}
+
+      <label htmlFor="">
+        {" "}
+        Check the prices
+        <select onChange={(e) => setPrice(e.target.value)}>
+          <option>{price}</option>
+          <option>{price}</option>
+          <option>{price}</option>
+        </select>
+      </label>
     </>
   );
 }
