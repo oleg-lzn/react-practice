@@ -11,6 +11,10 @@ import Timer from "./timer";
 import Table from "./Table_Search";
 import RefPortalModal from "./Portals";
 import Modal from "./Modal/Modal";
+import AdvancedTimer from "./AdvancedTimer";
+import InputComp from "./Input";
+import Select from "./Select";
+import ArrayActions from "./ArrayFunctions";
 
 function App() {
   const { money, setMoney, food, setFood } = useContext(TestContext);
@@ -19,7 +23,6 @@ function App() {
     customhook(10);
   const { data, loading, error, fetchData } = useData();
   const [modalOpen, setModalOpen] = useState(false);
-  const [price, setPrice] = useState(12);
 
   useEffect(() => {
     setMoney(16);
@@ -53,26 +56,6 @@ function App() {
 
   return (
     <>
-      <div className={`app ${theme === "dark" ? "theme-dark" : "theme-light"}`}>
-        <ul className="comments">
-          {currentItems.map((item) => (
-            <li className="comments_item" key={item.id}>
-              {item.title}
-            </li>
-          ))}
-        </ul>
-        <div className="pagination">
-          <button onClick={prevPage} disabled={currentPage === 1}>
-            Previous
-          </button>
-          <span>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button onClick={nextPage} disabled={currentPage === totalPages}>
-            Next
-          </button>
-        </div>
-      </div>
       <ComponentWithReducer />
       <Memo />
       <Timer />
@@ -98,16 +81,10 @@ function App() {
           <Modal onClose={toggleModal} />
         </RefPortalModal>
       )}
-
-      <label htmlFor="">
-        {" "}
-        Check the prices
-        <select onChange={(e) => setPrice(e.target.value)}>
-          <option>{price}</option>
-          <option>{price}</option>
-          <option>{price}</option>
-        </select>
-      </label>
+      <AdvancedTimer />
+      <InputComp />
+      <Select />
+      <ArrayActions />
     </>
   );
 }

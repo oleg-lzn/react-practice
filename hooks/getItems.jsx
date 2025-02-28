@@ -1,7 +1,7 @@
 import { getPosts } from "../api/api";
 import { useState, useEffect } from "react";
 
-export function customhook(itemsPerPage = 10) {
+export function customhook() {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState("error");
@@ -18,18 +18,19 @@ export function customhook(itemsPerPage = 10) {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const itemsPerPage = 5;
+  const endIndex = currentPage * itemsPerPage;
+  const startIndex = endIndex - itemsPerPage;
   const currentItems = posts.slice(startIndex, endIndex);
   const totalPages = Math.ceil(posts.length / itemsPerPage);
 
-  const nextPage = () => {
+  const setNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage((prev) => prev + 1);
     }
   };
 
-  const prevPage = () => {
+  const setPrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
     }
@@ -39,8 +40,8 @@ export function customhook(itemsPerPage = 10) {
     isLoading,
     currentItems,
     error,
-    nextPage,
-    prevPage,
+    setNextPage,
+    setPrevPage,
     currentPage,
     totalPages,
   };
