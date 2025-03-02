@@ -15,6 +15,7 @@ import AdvancedTimer from "./AdvancedTimer";
 import InputComp from "./Input";
 import Select from "./Select";
 import ArrayActions from "./ArrayFunctions";
+import TableComponent from "./Table/Table";
 
 function App() {
   const { money, setMoney, food, setFood } = useContext(TestContext);
@@ -85,6 +86,7 @@ function App() {
       <InputComp />
       <Select />
       <ArrayActions />
+      <TableComponent />
     </>
   );
 }

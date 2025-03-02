@@ -31,11 +31,9 @@ export const delayResult = (ms, result) => {
   });
 };
 
-const form = document.querySelector("#userinfo");
-
-async function sendData() {
+async function sendData(e) {
   // Associate the FormData object with the form element
-  const formData = new FormData(form);
+  const formData = new FormData(e.target);
 
   try {
     const response = await fetch("https://example.org/post", {
@@ -43,7 +41,7 @@ async function sendData() {
       // Set the FormData instance as the request body
       body: formData,
     });
-    console.log(await response.json());
+    return await response.json();
   } catch (e) {
     console.error(e);
   }

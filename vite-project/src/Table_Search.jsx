@@ -34,19 +34,6 @@ function Table() {
     );
   }, [sortType, posts]);
 
-  // Функция сортировки с if...else
-  // const sortedList = () => {
-  //   let sorted = [...posts];
-
-  //   if (sortType === "ASC") {
-  //     sorted.sort((a, b) => a.title.localeCompare(b.title));
-  //   } else if (sortType === "DSC") {
-  //     sorted.sort((a, b) => b.title.localeCompare(a.title));
-  //   }
-
-  //   return sorted;
-  // };
-
   const filteredItems = useMemo(() => {
     if (!inputValue) return posts;
     return posts.filter(
@@ -113,3 +100,16 @@ function Table() {
 }
 
 export default Table;
+
+// Функция сортировки с if...else
+// const sortedList = () => {
+//   let sorted = [...posts];
+
+//   if (sortType === "ASC") {
+//     sorted.sort((a, b) => a.title.localeCompare(b.title));
+//   } else if (sortType === "DSC") {
+//     sorted.sort((a, b) => b.title.localeCompare(a.title));
+//   }
+
+//   return sorted;
+// };
