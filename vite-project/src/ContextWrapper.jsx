@@ -14,3 +14,40 @@ export function ContextWrapper({ children }) {
     </ThemeContext.Provider>
   );
 }
+
+import React, { createContext, useContext, useState } from "react";
+
+const DataContext = createContext({ data: [], setData: () => {} });
+
+const DataProvider = ({ children }) => {
+  const [data, setData] = useState([
+    { id: 1, name: "Item 1" },
+    { id: 2, name: "Item 2" },
+  ]);
+
+  return (
+    <DataContext.Provider value={{ data, setData }}>
+      {children}
+    </DataContext.Provider>
+  );
+};
+
+const SomeComponent = () => {
+  const { data, setData } = useContext(DataContext);
+
+  const addItem = () => {
+    setData([
+      ...data,
+      { id: data.length + 1, name: `Item ${data.length + 1}` },
+    ]);
+  };
+
+  return (
+    <div>
+      {data.map((item) => (
+        <p key={item.id}>{item.name}</p>
+      ))}
+      <button onClick={addItem}>Добавить элемент</button>
+    </div>
+  );
+};

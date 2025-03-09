@@ -52,3 +52,29 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   sendData();
 });
+
+const getData = async (result, ms) => {
+  return new Promise((resolve, reject) => {
+    if (ms > 5000) {
+      reject("Too much time passed");
+    }
+    setTimeout(() => resolve(result), ms);
+  });
+};
+
+const main = async () => {
+  try {
+    console.log("Wait...");
+    const data = await getData("Bear in the Zoo", 1000);
+    console.log("Got Data...", data);
+    return data;
+  } catch (error) {
+    console.error("Error in Main", error);
+  }
+};
+
+main().then((data) => console.log(data));
+
+const getFruits = async () => {
+  return new Promise((resolve) => setTimeout(resolve, 1000));
+};

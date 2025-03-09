@@ -30,7 +30,7 @@ function ArrayActions() {
   const searchArray = useMemo(() => {
     if (!search) return array;
     else {
-      return [...array].filter(
+      return array.filter(
         (item) =>
           item.brand.toLowerCase().includes(search.toLowerCase()) ||
           item.model.toLowerCase().includes(search.toLowerCase())
@@ -39,12 +39,9 @@ function ArrayActions() {
   }, [search, array]);
 
   const sortedArray = useMemo(() => {
-    if (sortType === "power") {
-      return [...array].sort((a, b) => a.horsepower - b.horsepower);
-    }
-    if (sortType === "price") {
-      return [...array].sort((a, b) => a.price - b.price);
-    } else return array;
+    return sortType && array[0]?.[sortType]
+      ? [...array].sort((a, b) => a[sortType] - b[sortType])
+      : array;
   }, [array, sortType]);
 
   return (
@@ -106,7 +103,7 @@ function ArrayActions() {
 
       <select value={sortType} onChange={(e) => setSortType(e.target.value)}>
         <option>Select Sorting</option>
-        <option value="power"> By Power </option>
+        <option value="horsepower"> By Power </option>
         <option value="price"> By Price </option>
       </select>
 
@@ -134,7 +131,7 @@ function ArrayActions() {
           </tr>
         </thead>
         <tbody>
-          {searchArray.map((item) => (
+          {sortedArray.map((item) => (
             <tr key={item.id}>
               <td>{item.brand}</td>
               <td>{item.model}</td>

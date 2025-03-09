@@ -76,12 +76,12 @@ function Table() {
           </tr>
         </thead>
         <tbody className="table__body">
-          {currentItems.map((post) => {
+          {currentItems.map(({ id, userId, title, body }) => {
             return (
-              <tr key={post.id} className="table__row">
-                <td className="table__data">{post.userId}</td>
-                <td className="table__data">{post.title}</td>
-                <td className="table__data">{post.body}</td>
+              <tr key={id} className="table__row">
+                <td className="table__data">{userId}</td>
+                <td className="table__data">{title}</td>
+                <td className="table__data">{body}</td>
               </tr>
             );
           })}
