@@ -3,20 +3,20 @@ import React, { useState, useEffect } from "react";
 // дебаунсер на search
 
 const SearchComponent = () => {
-  const [query, setQuery] = useState(""); // Обычное состояние
-  const [debouncedQuery, setDebouncedQuery] = useState(""); // Дебаунс-состояние
+  const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState(""); 
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedQuery(query);
-    }, 1000); // Дебаунс 1 секунда
+    }, 1000);
 
-    return () => clearTimeout(timer); // Очистка таймера при изменении query
-  }, [query]); // Запускается при изменении query
+    return () => clearTimeout(timer); 
+  }, [query]);
 
   useEffect(() => {
     if (debouncedQuery) {
-      console.log("🔍 Отправка запроса для:", debouncedQuery);
+      console.log("🔍 Отправка запроса для:", debouncedQuery); // вызов API здесь!! 
     }
   }, [debouncedQuery]); // Выполняем запрос, когда обновился debouncedQuery
 
@@ -44,7 +44,6 @@ const ResizeComponent = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      console.log("📏 Изменение размера окна");
       setWindowWidth(window.innerWidth);
     };
 

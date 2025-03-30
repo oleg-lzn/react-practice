@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Select() {
+function DataInputSelect() {
   const [price, setPrice] = useState("");
   return (
     <label htmlFor="">
@@ -22,4 +22,4 @@ function Select() {
   );
 }
 
-export default Select;
+export default DataInputSelect;

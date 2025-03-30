@@ -12,10 +12,11 @@ import Table from "./Table_Search";
 import RefPortalModal from "./Portals";
 import Modal from "./Modal/Modal";
 import AdvancedTimer from "./AdvancedTimer";
-import InputComp from "./Input";
-import Select from "./Select";
+import Inputs from "./Inputs";
+import DataInputSelect from "./DataInputSelect";
 import ArrayActions from "./ArrayFunctions";
 import TableComponent from "./Table/Table";
+import DataListInput from "./DataListInput";
 
 function App() {
   const { money, setMoney, food, setFood } = useContext(TestContext);
@@ -83,8 +84,9 @@ function App() {
         </RefPortalModal>
       )}
       <AdvancedTimer />
-      <InputComp />
-      <Select />
+      <DataListInput />
+      <Inputs />
+      <DataInputSelect />
       <ArrayActions />
       <TableComponent />
     </>

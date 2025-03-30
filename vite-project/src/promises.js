@@ -8,21 +8,19 @@ export const delay = (ms) => {
 };
 
 export const fetchData = (url) => {
-  return new Promise((resolve, reject) => {
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) {
-          return reject(`Ошибка ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        if (data) {
-          resolve(data);
-        }
-      })
-      .catch((error) => reject(`Ошибка ${error.message || error}`));
-  });
+  return fetch(url)
+    .then((res) => {
+      if (!res.ok) {
+        return `Ошибка ${res.status}`;
+      }
+      return res.json();
+    })
+    .then((data) => {
+      if (data) {
+        console.log(data);
+      }
+    })
+    .catch((error) => reject(`Ошибка ${error.message || error}`));
 };
 
 export const delayResult = (ms, result) => {
@@ -32,6 +30,7 @@ export const delayResult = (ms, result) => {
 };
 
 async function sendData(e) {
+  e.preventDefault();
   // Associate the FormData object with the form element
   const formData = new FormData(e.target);
 
@@ -47,11 +46,12 @@ async function sendData(e) {
   }
 }
 
-// Take over form submission
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  sendData();
-});
+<form onSubmit={sendData}>
+  <p> Some data to send</p>
+  <input type="text" name="name" />
+  <input type="text" name="surname" />
+  <input type="text" name="Address" />
+</form>;
 
 const getData = async (result, ms) => {
   return new Promise((resolve, reject) => {
@@ -67,12 +67,13 @@ const main = async () => {
     console.log("Wait...");
     const data = await getData("Bear in the Zoo", 1000);
     console.log("Got Data...", data);
-    return data;
+    return await data.json();
   } catch (error) {
     console.error("Error in Main", error);
   }
 };
 
+// или
 main().then((data) => console.log(data));
 
 const getFruits = async () => {

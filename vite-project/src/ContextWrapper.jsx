@@ -1,5 +1,5 @@
 import { TestContext, ThemeContext } from "./ContextFile";
-import { useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export function ContextWrapper({ children }) {
   const [money, setMoney] = useState(0);
@@ -14,8 +14,6 @@ export function ContextWrapper({ children }) {
     </ThemeContext.Provider>
   );
 }
-
-import React, { createContext, useContext, useState } from "react";
 
 const DataContext = createContext({ data: [], setData: () => {} });
 

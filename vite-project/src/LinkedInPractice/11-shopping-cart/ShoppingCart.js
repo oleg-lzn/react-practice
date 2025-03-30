@@ -17,8 +17,6 @@ const items = [
 
 function ShoppingCart() {
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [subTotal, setSubtotal] = useState(0);
 
   function addToCart(item) {
     let cartCopy = [...cart];

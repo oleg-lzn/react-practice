@@ -6,7 +6,9 @@ export default function DogPics() {
 
   async function fetchDogPic(link) {
     const response = await fetch(link);
-    if (response.ok) {
+    if (!response.ok) {
+      throw new Error("Error with fetching");
+    } else {
       const result = await response.json();
       return result.message;
     }
