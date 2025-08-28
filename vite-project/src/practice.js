@@ -81,3 +81,10 @@ function debounce(func, delay) {
     timer = setTimeout(() => func(...args), delay);
   };
 }
+
+function getResult(array) {
+  return array.reduce((acc, item) => {
+    acc[item.regions] = (acc[item.regions] || 0) + 1;
+    return acc;
+  }, {});
+}

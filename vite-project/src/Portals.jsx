@@ -5,7 +5,6 @@ import { createPortal } from "react-dom";
 // without children and ref
 
 export function Portals(props) {
-  const { children } = props;
   const [showModal, setShowModal] = useState(false);
 
   return (

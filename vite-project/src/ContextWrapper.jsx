@@ -34,8 +34,8 @@ const SomeComponent = () => {
   const { data, setData } = useContext(DataContext);
 
   const addItem = () => {
-    setData([
-      ...data,
+    setData((prevData) => [
+      ...prevData,
       { id: data.length + 1, name: `Item ${data.length + 1}` },
     ]);
   };

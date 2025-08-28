@@ -2,9 +2,9 @@ const TableHeader = () => {
   return (
     <thead>
       <tr>
-        <td> brand </td>
-        <td> model </td>
-        <td> horsepower </td>
+        <th> brand </th>
+        <th> model </th>
+        <th> horsepower </th>
       </tr>
     </thead>
   );

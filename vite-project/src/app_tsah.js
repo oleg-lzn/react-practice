@@ -1,0 +1,191 @@
+const arr = [
+  {
+    _id: "805774d2-ba75-482a-85eb-7c28f564fbff",
+    status: "active",
+    rowColor: "#FFFFFF",
+    customerId: "67c8337d3c6d3d3b6d6ff8ea",
+    advancePayment: 0,
+    isSplittedReturnTrip: false,
+    isDuplicatedTrip: false,
+    driverId: "67dfd45dab79f3531e1ca4ea",
+    attendantId: "6769142b60f239501acdbb6f",
+    carTypeId: "676a6efc1333da07db794baa",
+    discount: 0,
+    tripPassengers: [],
+    date: "2026-04-21T00:00:00.000Z",
+    startTime: "10:00",
+    endTime: "16:00",
+    tripType: "קו קבוע",
+    startPoint: {
+      address: "חדרה",
+      lat: 32.4340458,
+      lng: 34.9196518,
+    },
+    endPoint: {
+      address: "ירושלים",
+      lat: 31.768319,
+      lng: 35.21371,
+    },
+    endPointSameAsStartPoint: true,
+    stops: [],
+    priceWithoutVATCustomer: 125,
+    vatCustomer: 18,
+    priceWithoutVATDriver: 13.75,
+    vatDriver: 0,
+    priceWithoutVATAttendant: 0,
+    vatAttendant: 0,
+    tripExtraCost: [],
+    capitationStatus: "הנהלת חשבונות",
+    tollRoad: true,
+    studentsTransport: false,
+    isAccommodation: false,
+    isAccessibilityRequired: true,
+    description: "תיאור לניסיון גגג",
+    malfunctionFine: 0,
+    advancePaymentMethod: "",
+    historyTrips: [],
+    routeCode: "2124acbd-4f24-4ad7-aac5-c75ab60a7d2e",
+  },
+  {
+    _id: "69bd6596-e455-4091-8609-453b8a601654",
+    status: "active",
+    rowColor: "#FFFFFF",
+    customerId: "67c83348f1acbb4ab3797ffd",
+    advancePayment: 0,
+    isSplittedReturnTrip: false,
+    isDuplicatedTrip: false,
+    driverId: "67dfd45dab79f3531e1ca4ea",
+    attendantId: "67a51615fc5dd0ab6abe882f",
+    carTypeId: "676a6efc1333da07db794baa",
+    discount: 0,
+    tripPassengers: [
+      {
+        _id: "81dd7a0b-a88a-40db-8378-79555c3ff884",
+        name: "יוסי",
+        phone: "0526277788",
+        notes: "",
+        pickupTime: "10:00",
+      },
+    ],
+    date: "2026-04-21T00:00:00.000Z",
+    startTime: "12:00",
+    endTime: "16:00",
+    tripType: "קו קבוע",
+    startPoint: {
+      address: "מצפה רמון",
+      lat: 30.6094096,
+      lng: 34.8011766,
+    },
+    endPoint: {
+      address: "מגדל העמק",
+      lat: 32.6778114,
+      lng: 35.2417497,
+    },
+    endPointSameAsStartPoint: true,
+    stops: [
+      {
+        address: "עפולה",
+        lat: "32.610493",
+        lng: "35.287922",
+        _id: "68048b76b67386cfb5dc9597",
+      },
+    ],
+    priceWithoutVATCustomer: 125,
+    vatCustomer: 18,
+    priceWithoutVATDriver: 13.75,
+    vatDriver: 0,
+    priceWithoutVATAttendant: 0,
+    vatAttendant: 0,
+    tripExtraCost: [],
+    capitationStatus: "הנהלת חשבונות",
+    tollRoad: false,
+    studentsTransport: false,
+    isAccommodation: false,
+    isAccessibilityRequired: false,
+    description: "xx",
+    malfunctionFine: 0,
+    advancePaymentMethod: "",
+    historyTrips: [],
+    routeCode: "3ed722b3-bdf4-4e4b-9264-9b0dc94e50a2",
+  },
+  {
+    _id: "17c13bef-8b58-4472-8967-4bd16110d2bf",
+    status: "active",
+    rowColor: "#f7cfd1",
+    customerId: "67d940eeab8ea189f4d0f908",
+    advancePayment: 0,
+    isSplittedReturnTrip: false,
+    isDuplicatedTrip: false,
+    driverId: "674ebc65c5b9564af21a4434",
+    attendantId: "67a51615fc5dd0ab6abe882f",
+    carTypeId: "676999aad06d7f44fd30941e",
+    discount: 0,
+    tripPassengers: [],
+    date: "2026-04-21T00:00:00.000Z",
+    startTime: "16:00",
+    endTime: "20:30",
+    tripType: "קו קבוע",
+    startPoint: {
+      address: "מודיעין מכבים רעות",
+      lat: 31.890267,
+      lng: 35.010397,
+    },
+    endPoint: {
+      address: "נתניה",
+      lat: 32.321458,
+      lng: 34.853196,
+    },
+    endPointSameAsStartPoint: true,
+    stops: [
+      {
+        address: "עפולה",
+        lat: "32.610493",
+        lng: "35.287922",
+        _id: "6800bb6ab9990fda251289f4",
+      },
+    ],
+    priceWithoutVATCustomer: 0,
+    vatCustomer: 18,
+    priceWithoutVATDriver: 245,
+    vatDriver: 0,
+    priceWithoutVATAttendant: 0,
+    vatAttendant: 0,
+    tripExtraCost: [],
+    capitationStatus: "הנהלת חשבונות",
+    tollRoad: false,
+    studentsTransport: true,
+    isAccommodation: false,
+    isAccessibilityRequired: false,
+    description: "ממודיעין מכבים רעות הערה1234",
+    malfunctionFine: 0,
+    advancePaymentMethod: "",
+    historyTrips: [],
+    routeCode: "c800d1a0-3427-4ed8-8cdd-3b2f7f756cad",
+  },
+];
+
+const sendReq = async (ride) => {
+  try {
+    const res = await fetch(
+      "http://localhost:8181/workArrangement/ride/2026-04-21",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token":
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRlYmI5YWM1Yjk1NjRhZjIxYTQzZDciLCJpc0FkbWluIjp0cnVlLCJmaXJzdE5hbWUiOiLXnteV16DXmSIsInBlcm1pc3Npb24iOjksImNvbXBhbnlJZCI6IjY3NGViYjlhYzViOTU2NGFmMjFhNDNkNSIsInJvbGUiOiJlbXBsb3llZSIsImlhdCI6MTc0NzU0ODY5OX0.D6AiEundkDW1pXHZqOpRhcOPkPVg3wnr-bkbmTQI8Pw",
+        },
+        body: JSON.stringify(ride),
+      }
+    );
+    return res.ok;
+  } catch (err) {
+    console.error("Error for ride", ride._id, err);
+  }
+};
+
+const runAll = async () => {
+  await Promise.all(arr.map(sendReq));
+};
+
+runAll();
