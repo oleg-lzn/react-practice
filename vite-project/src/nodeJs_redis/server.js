@@ -7,6 +7,18 @@ const rIncr = promisify(client.incr).bind(client);
 const rGet = promisify(client.get).bind(client);
 const rSetex = promisify(client.setex).bind(client);
 
+function cache(key, ttl, slowFn) {
+  return async function (...props) {
+    const cachedResponse = await rGet(key);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    const result = await slowFn(...props);
+    await rSetex(key, ttl, result);
+    return result;
+  };
+}
+
 async function init() {
   const app = express();
 
@@ -28,24 +40,6 @@ async function init() {
     });
   });
 
-  const PORT = process.env.PORT || 3000;
-  app.use(express.static("./static"));
-  app.listen(PORT);
-
-  console.log(`running on http://localhost:${PORT}`);
-
-  function cache(key, ttl, slowFn) {
-    return async function (...props) {
-      const cachedResponse = await rGet(key);
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      const result = await slowFn(...props);
-      await rSetex(key, ttl, result);
-      return result;
-    };
-  }
-
   async function verySlowAndExpensiveFunction() {
     // imagine this is like a really big join on PostgreSQL
     // or a call to an expensive API
@@ -61,6 +55,12 @@ async function init() {
   }
 
   const cachedFn = cache("expensive_call", 10, verySlowAndExpensiveFunction);
+
+  const PORT = process.env.PORT || 3000;
+  app.use(express.static("./static"));
+  app.listen(PORT);
+
+  console.log(`running on http://localhost:${PORT}`);
 }
 
 init();
