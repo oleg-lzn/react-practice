@@ -2,7 +2,7 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { TestContext, ThemeContext } from "./ContextFile";
 import { useContext } from "react";
-import { customhook } from "../../hooks/getItems";
+import { customhook } from "../../hooks/pagination";
 import ComponentWithReducer from "./Reducer";
 import Memo from "./TestMemo";
 import { getItems } from "../../api/api-calls";
@@ -36,19 +36,19 @@ function App() {
   };
 
   function toggleModal() {
-    setModalOpen((prev) => (prev === false ? true : false));
+    setModalOpen(prev => (prev === false ? true : false));
   }
 
   function changeFood() {
-    setFood((prevFood) => (prevFood === "burger" ? "pizza" : "burger"));
+    setFood(prevFood => (prevFood === "burger" ? "pizza" : "burger"));
   }
 
   function changeTheme() {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme(prev => (prev === "light" ? "dark" : "light"));
   }
 
   function incrementMoney() {
-    setMoney((prevValue) => prevValue + 1);
+    setMoney(prevValue => prevValue + 1);
   }
 
   function consoleLogger() {

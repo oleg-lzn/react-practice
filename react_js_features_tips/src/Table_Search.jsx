@@ -1,6 +1,6 @@
 import { getPosts } from "../../api/api";
 import { useEffect, useState, useMemo } from "react";
-import { customhook } from "../../hooks/getItems";
+import { customhook } from "../../hooks/pagination";
 
 function Table() {
   const [isLoading, setLoading] = useState(false);
@@ -15,11 +15,11 @@ function Table() {
   useEffect(() => {
     setLoading(true);
     getPosts()
-      .then((res) => {
+      .then(res => {
         console.log(res);
         setPosts(res);
       })
-      .catch((err) => console.error(err))
+      .catch(err => console.error(err))
       .finally(() => setLoading(false));
   }, []);
 
@@ -37,7 +37,7 @@ function Table() {
   const filteredItems = useMemo(() => {
     if (!inputValue) return posts;
     return posts.filter(
-      (post) =>
+      post =>
         post.title.toLowerCase().includes(inputValue.toLowerCase()) ||
         post.body.toLowerCase().includes(inputValue.toLowerCase())
     );
@@ -48,7 +48,7 @@ function Table() {
       <input
         type="text"
         value={inputValue}
-        onChange={(e) => {
+        onChange={e => {
           setInputValue(e.target.value);
         }}
       />
