@@ -22,16 +22,21 @@ const DataProvider = ({ children }) => {
     { id: 1, name: "Item 1" },
     { id: 2, name: "Item 2" },
   ]);
+  
+  const value = {data, setData}
 
   return (
-    <DataContext.Provider value={{ data, setData }}>
+    <DataContext.Provider value={value}>
       {children}
     </DataContext.Provider>
   );
 };
 
+export useDataContext = () => useContext(DataContext)
+
+
 const SomeComponent = () => {
-  const { data, setData } = useContext(DataContext);
+  const { data, setData } = useDataContext();
 
   const addItem = () => {
     setData((prevData) => [
