@@ -33,5 +33,10 @@ const requireRole = role => (req, res, next) => {
 // Роль хранится в токене, который выписывается пользователю при сайн апе и кладется туда
 // 1 мидлвэр достает пэйлоад и кладет его в req.user, второй проверяет роль
 
-app.get("/api/admin/users", requireRole("admin"), getUsers);
-app.delete("/api/admin/posts", requireRole("moderator"), deletePosts);
+app.get("/api/admin/users", authenticate, requireRole("admin"), getUsers);
+app.delete(
+  "/api/admin/posts",
+  authenticate,
+  requireRole("moderator"),
+  deletePosts
+);
